@@ -1,0 +1,458 @@
+{
+  "timezone": "America/New_York",
+  "updated_on": "2026-06-15",
+  "selection_policy": {
+    "daily_target": 20,
+    "review_intervals_days": [
+      1,
+      3,
+      7,
+      14,
+      30
+    ],
+    "rule": "Pick due reviews first, then fill remaining slots with new unlearned words. Do not repeat the same full batch on consecutive days unless those words are actually due or were marked wrong/fuzzy."
+  },
+  "items": [
+    {
+      "page_id": "90a8dca1-112e-4efc-b6ba-ca6fc6b087fd",
+      "term": "ad-lib",
+      "first_seen": "2026-06-10",
+      "last_seen": "2026-06-13",
+      "stage": 2,
+      "next_review": "2026-06-20",
+      "status": "review_later"
+    },
+    {
+      "page_id": "09408589-1a36-41ac-9b69-ab01764998c3",
+      "term": "paradigmatic",
+      "first_seen": "2026-06-10",
+      "last_seen": "2026-06-13",
+      "stage": 2,
+      "next_review": "2026-06-20",
+      "status": "review_later"
+    },
+    {
+      "page_id": "f669182f-bcc7-46b9-b6cc-a151bee18161",
+      "term": "loanword",
+      "first_seen": "2026-06-10",
+      "last_seen": "2026-06-13",
+      "stage": 2,
+      "next_review": "2026-06-20",
+      "status": "review_later"
+    },
+    {
+      "page_id": "69451fe0-9651-4383-b537-73a09b69ff94",
+      "term": "hibernate",
+      "first_seen": "2026-06-10",
+      "last_seen": "2026-06-13",
+      "stage": 2,
+      "next_review": "2026-06-20",
+      "status": "review_later"
+    },
+    {
+      "page_id": "5c148498-fda0-469b-b35d-7e40f09e9bf4",
+      "term": "pent-up",
+      "first_seen": "2026-06-10",
+      "last_seen": "2026-06-13",
+      "stage": 2,
+      "next_review": "2026-06-20",
+      "status": "review_later"
+    },
+    {
+      "page_id": "bb74e5a4-a4b7-45ad-9bd9-0aa183da1afe",
+      "term": "migratory",
+      "first_seen": "2026-06-10",
+      "last_seen": "2026-06-13",
+      "stage": 2,
+      "next_review": "2026-06-20",
+      "status": "review_later"
+    },
+    {
+      "page_id": "fc47c9d3-9c1b-4296-ae4f-7a93423d59d8",
+      "term": "splurge on something",
+      "first_seen": "2026-06-10",
+      "last_seen": "2026-06-13",
+      "stage": 2,
+      "next_review": "2026-06-20",
+      "status": "review_later"
+    },
+    {
+      "page_id": "8e252e99-6fd2-4f3e-b9ef-d6130f22aeff",
+      "term": "seizing",
+      "first_seen": "2026-06-10",
+      "last_seen": "2026-06-13",
+      "stage": 2,
+      "next_review": "2026-06-20",
+      "status": "review_later"
+    },
+    {
+      "page_id": "3714d4d2-1569-40fc-9c53-dc97611a81d1",
+      "term": "cynical",
+      "first_seen": "2026-06-10",
+      "last_seen": "2026-06-13",
+      "stage": "learned",
+      "next_review": null,
+      "status": "fully_learned"
+    },
+    {
+      "page_id": "d973252c-5cbb-4034-a75e-832036a70388",
+      "term": "contemptuous",
+      "first_seen": "2026-06-10",
+      "last_seen": "2026-06-13",
+      "stage": 2,
+      "next_review": "2026-06-20",
+      "status": "review_later"
+    },
+    {
+      "page_id": "ef880410-f3e0-40c7-b449-ff7f7ed30492",
+      "term": "contingency",
+      "first_seen": "2026-06-10",
+      "last_seen": "2026-06-13",
+      "stage": 2,
+      "next_review": "2026-06-20",
+      "status": "review_later"
+    },
+    {
+      "page_id": "5c232b3e-7c86-4e4b-811d-892c370c6320",
+      "term": "mediation",
+      "first_seen": "2026-06-10",
+      "last_seen": "2026-06-13",
+      "stage": 2,
+      "next_review": "2026-06-20",
+      "status": "review_later"
+    },
+    {
+      "page_id": "72cc9fb3-4d7b-4433-8560-6c60db4eae37",
+      "term": "logistics",
+      "first_seen": "2026-06-10",
+      "last_seen": "2026-06-13",
+      "stage": 2,
+      "next_review": "2026-06-20",
+      "status": "review_later"
+    },
+    {
+      "page_id": "349fa3e8-ce11-4871-9c01-ba3ec03a2ace",
+      "term": "impeccable",
+      "first_seen": "2026-06-10",
+      "last_seen": "2026-06-13",
+      "stage": 2,
+      "next_review": "2026-06-20",
+      "status": "review_later"
+    },
+    {
+      "page_id": "4474b6cb-d133-44d8-abb9-a4e231e80abf",
+      "term": "sequestration",
+      "first_seen": "2026-06-10",
+      "last_seen": "2026-06-13",
+      "stage": 2,
+      "next_review": "2026-06-20",
+      "status": "review_later"
+    },
+    {
+      "page_id": "2181f1d1-085c-47a3-a8d9-abf4e43a94ff",
+      "term": "insolence",
+      "first_seen": "2026-06-10",
+      "last_seen": "2026-06-13",
+      "stage": 2,
+      "next_review": "2026-06-20",
+      "status": "review_later"
+    },
+    {
+      "page_id": "bf076ae0-e6ab-4a12-b47f-62d710e85da9",
+      "term": "remit",
+      "first_seen": "2026-06-10",
+      "last_seen": "2026-06-13",
+      "stage": 2,
+      "next_review": "2026-06-20",
+      "status": "review_later"
+    },
+    {
+      "page_id": "38e5db2b-05d3-4805-80a7-89b487e117cd",
+      "term": "courtesy",
+      "first_seen": "2026-06-10",
+      "last_seen": "2026-06-13",
+      "stage": 2,
+      "next_review": "2026-06-20",
+      "status": "review_later"
+    },
+    {
+      "page_id": "0016e36e-f6fd-465f-a261-157d60a03349",
+      "term": "empress",
+      "first_seen": "2026-06-10",
+      "last_seen": "2026-06-13",
+      "stage": 2,
+      "next_review": "2026-06-20",
+      "status": "review_later"
+    },
+    {
+      "page_id": "32291393-aa6b-49a6-a698-6766926c6fca",
+      "term": "affidavit",
+      "first_seen": "2026-06-10",
+      "last_seen": "2026-06-13",
+      "stage": 2,
+      "next_review": "2026-06-20",
+      "status": "review_later"
+    },
+    {
+      "page_id": "f0e591d3-eb00-4bad-80df-d1bb329e2298",
+      "term": "soak up",
+      "first_seen": "2026-06-14",
+      "last_seen": "2026-06-15",
+      "stage": 1,
+      "next_review": "2026-06-17",
+      "status": "review_later"
+    },
+    {
+      "page_id": "532249d7-fc28-47a3-aa8e-95e13aa4c589",
+      "term": "contest",
+      "first_seen": "2026-06-14",
+      "last_seen": "2026-06-15",
+      "stage": 1,
+      "next_review": "2026-06-17",
+      "status": "review_later"
+    },
+    {
+      "page_id": "538b9a93-e20c-4f88-ba2b-4e50e749106b",
+      "term": "appropriation",
+      "first_seen": "2026-06-14",
+      "last_seen": "2026-06-15",
+      "stage": 1,
+      "next_review": "2026-06-17",
+      "status": "review_later"
+    },
+    {
+      "page_id": "b703b287-4cfb-4be2-8576-2388233c3385",
+      "term": "fly under the radar",
+      "first_seen": "2026-06-14",
+      "last_seen": "2026-06-15",
+      "stage": 1,
+      "next_review": "2026-06-17",
+      "status": "review_later"
+    },
+    {
+      "page_id": "0350a976-b774-4ffa-8cee-1e83cc150c22",
+      "term": "nail it",
+      "first_seen": "2026-06-14",
+      "last_seen": "2026-06-14",
+      "stage": 1,
+      "next_review": "2026-06-17",
+      "status": "review_later"
+    },
+    {
+      "page_id": "fef0648c-2ace-495d-b17a-a37e0877f6e5",
+      "term": "licensure",
+      "first_seen": "2026-06-14",
+      "last_seen": "2026-06-15",
+      "stage": 1,
+      "next_review": "2026-06-17",
+      "status": "review_later"
+    },
+    {
+      "page_id": "8f2b57c6-1e86-4895-94ba-e6ce0b6a42dc",
+      "term": "rock the boat",
+      "first_seen": "2026-06-14",
+      "last_seen": "2026-06-15",
+      "stage": 1,
+      "next_review": "2026-06-17",
+      "status": "review_later"
+    },
+    {
+      "page_id": "b6a44038-d8ee-41dc-8d1e-1495f380b76e",
+      "term": "hit the spot",
+      "first_seen": "2026-06-14",
+      "last_seen": "2026-06-14",
+      "stage": 1,
+      "next_review": "2026-06-17",
+      "status": "review_later"
+    },
+    {
+      "page_id": "b3a65ec4-3719-4a75-8d1a-2a734f228a15",
+      "term": "gain an edge in",
+      "first_seen": "2026-06-14",
+      "last_seen": "2026-06-14",
+      "stage": 1,
+      "next_review": "2026-06-17",
+      "status": "review_later"
+    },
+    {
+      "page_id": "823861f2-88f0-4576-bbe8-3cfb00831171",
+      "term": "cower (in fear)",
+      "first_seen": "2026-06-14",
+      "last_seen": "2026-06-15",
+      "stage": 1,
+      "next_review": "2026-06-17",
+      "status": "review_later"
+    },
+    {
+      "page_id": "2b9a0237-e77c-4d84-a6c2-2b0a9c8cd888",
+      "term": "a rejuvenating week off",
+      "first_seen": "2026-06-14",
+      "last_seen": "2026-06-15",
+      "stage": 1,
+      "next_review": "2026-06-17",
+      "status": "review_later"
+    },
+    {
+      "page_id": "effea9fb-e766-4427-9b9d-1d082bdd0d09",
+      "term": "curry favor (with sb.)",
+      "first_seen": "2026-06-14",
+      "last_seen": "2026-06-14",
+      "stage": 1,
+      "next_review": "2026-06-17",
+      "status": "review_later"
+    },
+    {
+      "page_id": "74c54a18-9a6f-49f8-9657-78351a32fe13",
+      "term": "on the off chance (that)",
+      "first_seen": "2026-06-14",
+      "last_seen": "2026-06-15",
+      "stage": 1,
+      "next_review": "2026-06-17",
+      "status": "review_later"
+    },
+    {
+      "page_id": "2fbf9634-c066-4dbd-b23c-ead17684580b",
+      "term": "step on someone’s toes",
+      "first_seen": "2026-06-14",
+      "last_seen": "2026-06-14",
+      "stage": 1,
+      "next_review": "2026-06-17",
+      "status": "review_later"
+    },
+    {
+      "page_id": "f6e93883-291b-4f5e-ada5-2f37a48be07e",
+      "term": "Cabinet reshuffle",
+      "first_seen": "2026-06-14",
+      "last_seen": "2026-06-15",
+      "stage": 1,
+      "next_review": "2026-06-17",
+      "status": "review_later"
+    },
+    {
+      "page_id": "e78147be-dd5a-4895-b9a8-5b881fa45e91",
+      "term": "in the loop (about/on sth)",
+      "first_seen": "2026-06-14",
+      "last_seen": "2026-06-14",
+      "stage": 1,
+      "next_review": "2026-06-17",
+      "status": "review_later"
+    },
+    {
+      "page_id": "a643d627-0072-4817-8656-bfbceb028bf7",
+      "term": "hop to it",
+      "first_seen": "2026-06-14",
+      "last_seen": "2026-06-15",
+      "stage": 1,
+      "next_review": "2026-06-17",
+      "status": "review_later"
+    },
+    {
+      "page_id": "d15f451f-3fcc-4ab3-bfa0-ec61fbeeb100",
+      "term": "back and forth",
+      "first_seen": "2026-06-14",
+      "last_seen": "2026-06-15",
+      "stage": 1,
+      "next_review": "2026-06-17",
+      "status": "review_later"
+    },
+    {
+      "page_id": "cbadbdbb-7856-419f-a555-b75fe118f61b",
+      "term": "aforementioned",
+      "first_seen": "2026-06-14",
+      "last_seen": "2026-06-14",
+      "stage": 0,
+      "next_review": "2026-06-16",
+      "status": "carried_due_review"
+    },
+    {
+      "page_id": "1adbc728-dfd0-4f77-b632-6f7b13c96b21",
+      "term": "blizzard",
+      "first_seen": "2026-06-14",
+      "last_seen": "2026-06-14",
+      "stage": 0,
+      "next_review": "2026-06-16",
+      "status": "carried_due_review"
+    },
+    {
+      "page_id": "fd26efa5-31da-4dce-99d1-4f7012ff6ffd",
+      "term": "drastically",
+      "first_seen": "2026-06-15",
+      "last_seen": "2026-06-15",
+      "stage": 0,
+      "next_review": "2026-06-16",
+      "status": "new_today"
+    },
+    {
+      "page_id": "252aa814-1dd5-415a-ae50-124f73bde0bf",
+      "term": "recalibration",
+      "first_seen": "2026-06-15",
+      "last_seen": "2026-06-15",
+      "stage": 0,
+      "next_review": "2026-06-16",
+      "status": "new_today"
+    },
+    {
+      "page_id": "02a2a22e-d74e-4783-9a87-c015e059e3d3",
+      "term": "deviation",
+      "first_seen": "2026-06-15",
+      "last_seen": "2026-06-15",
+      "stage": 0,
+      "next_review": "2026-06-16",
+      "status": "new_today"
+    },
+    {
+      "page_id": "49630432-e126-4985-948a-6f3b47173e31",
+      "term": "litigation",
+      "first_seen": "2026-06-15",
+      "last_seen": "2026-06-15",
+      "stage": 0,
+      "next_review": "2026-06-16",
+      "status": "new_today"
+    },
+    {
+      "page_id": "c9ae7f7b-bf9d-4e49-abb1-8158fd397312",
+      "term": "astute",
+      "first_seen": "2026-06-15",
+      "last_seen": "2026-06-15",
+      "stage": 0,
+      "next_review": "2026-06-16",
+      "status": "new_today"
+    },
+    {
+      "page_id": "3af766e4-5c25-426f-b6b1-aa798f83393a",
+      "term": "incarceration",
+      "first_seen": "2026-06-15",
+      "last_seen": "2026-06-15",
+      "stage": 0,
+      "next_review": "2026-06-16",
+      "status": "new_today"
+    },
+    {
+      "page_id": "8ceeb771-cab2-43c9-a661-9cffaef5feb4",
+      "term": "suffice",
+      "first_seen": "2026-06-15",
+      "last_seen": "2026-06-15",
+      "stage": 0,
+      "next_review": "2026-06-16",
+      "status": "new_today"
+    },
+    {
+      "page_id": "c2a0170c-8f63-4a28-b88a-37c7e4eb6d87",
+      "term": "temporal",
+      "first_seen": "2026-06-15",
+      "last_seen": "2026-06-15",
+      "stage": 0,
+      "next_review": "2026-06-16",
+      "status": "new_today"
+    }
+  ],
+  "last_selection": {
+    "date": "2026-06-15",
+    "due_review_count": 12,
+    "new_count": 8,
+    "total": 20,
+    "carried_due_count": 2,
+    "archive": "outputs/audio-vocab-2026-06-15.html",
+    "latest": "outputs/audio-vocab.html"
+  }
+}

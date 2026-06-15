@@ -1,0 +1,817 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Daily Vocabulary Reader</title>
+  <style>
+    :root {
+      --paper: #f7f2e8;
+      --ink: #17211c;
+      --muted: #65716a;
+      --line: #d9cebd;
+      --panel: #fffaf0;
+      --green: #0c6b52;
+      --green-dark: #084838;
+      --orange: #b65b2a;
+      --blue: #345e92;
+      --shadow: 0 16px 40px rgba(28, 38, 32, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background:
+        linear-gradient(135deg, rgba(12, 107, 82, 0.08), transparent 34%),
+        linear-gradient(225deg, rgba(182, 91, 42, 0.08), transparent 28%),
+        var(--paper);
+      color: var(--ink);
+      font-family: ui-serif, Georgia, "Times New Roman", "Songti SC", serif;
+      letter-spacing: 0;
+    }
+
+    button,
+    select,
+    input {
+      font: inherit;
+    }
+
+    .shell {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 56px;
+    }
+
+    header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: end;
+      gap: 24px;
+      border-bottom: 2px solid var(--ink);
+      padding-bottom: 22px;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 840px;
+      font-size: clamp(34px, 6vw, 72px);
+      line-height: 0.92;
+      font-weight: 800;
+    }
+
+    .date {
+      margin: 16px 0 0;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .toolbar {
+      display: grid;
+      grid-template-columns: repeat(2, auto);
+      gap: 10px;
+      align-items: center;
+      justify-content: end;
+    }
+
+    .control-row {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .control-row label {
+      white-space: nowrap;
+    }
+
+    .control-row input {
+      width: 110px;
+      accent-color: var(--green);
+    }
+
+    .btn {
+      min-height: 42px;
+      border: 1px solid var(--ink);
+      background: var(--panel);
+      color: var(--ink);
+      padding: 9px 14px;
+      border-radius: 7px;
+      cursor: pointer;
+      transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(23, 33, 28, 0.14);
+    }
+
+    .btn.primary {
+      background: var(--green);
+      color: #fff;
+      border-color: var(--green-dark);
+    }
+
+    .btn.stop {
+      background: #efe3d4;
+      color: #5a1f14;
+      border-color: #8d3b2a;
+    }
+
+    .btn.sync {
+      background: #f6eddc;
+      color: #163d34;
+      border-color: var(--green);
+    }
+
+    .status {
+      margin-top: 22px;
+      min-height: 42px;
+      display: flex;
+      align-items: center;
+      border: 1px solid var(--line);
+      background: rgba(255, 250, 240, 0.7);
+      padding: 10px 14px;
+      color: var(--muted);
+      border-radius: 7px;
+    }
+
+    .sync-panel {
+      display: none;
+      margin-top: 12px;
+      border: 1px solid var(--green);
+      background: rgba(255, 250, 240, 0.92);
+      border-radius: 8px;
+      padding: 12px;
+      box-shadow: 0 8px 22px rgba(28, 38, 32, 0.08);
+    }
+
+    .sync-panel.visible {
+      display: block;
+    }
+
+    .sync-panel label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--green-dark);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .sync-panel textarea {
+      width: 100%;
+      min-height: 150px;
+      resize: vertical;
+      border: 1px solid var(--line);
+      background: #fffdf7;
+      color: var(--ink);
+      border-radius: 7px;
+      padding: 10px;
+      line-height: 1.45;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 13px;
+    }
+
+    .sync-actions {
+      margin-top: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .grid {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 14px;
+    }
+
+    .word {
+      min-height: 282px;
+      border: 1px solid var(--line);
+      background: rgba(255, 250, 240, 0.92);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      padding: 18px;
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      gap: 12px;
+    }
+
+    .word.playing {
+      border-color: var(--green);
+      box-shadow: 0 0 0 3px rgba(12, 107, 82, 0.18), var(--shadow);
+    }
+
+    .word.learned {
+      background: rgba(232, 241, 226, 0.9);
+      border-color: rgba(12, 107, 82, 0.55);
+    }
+
+    .word.learned h2,
+    .word.learned .meaning,
+    .word.learned .example,
+    .word.learned .tip {
+      opacity: 0.58;
+    }
+
+    .topline {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .index {
+      flex: 0 0 auto;
+      min-width: 34px;
+      height: 34px;
+      display: inline-grid;
+      place-items: center;
+      border-radius: 50%;
+      color: #fff;
+      background: var(--ink);
+      font-weight: 700;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 28px;
+      line-height: 1.03;
+      overflow-wrap: anywhere;
+    }
+
+    .pronunciation {
+      color: var(--orange);
+      font-size: 15px;
+    }
+
+    .meaning,
+    .example,
+    .tip {
+      margin: 0;
+      line-height: 1.45;
+    }
+
+    .meaning {
+      font-size: 17px;
+    }
+
+    .example {
+      color: var(--blue);
+      font-size: 15px;
+    }
+
+    .tip {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .actions .learned-btn {
+      grid-column: 1 / -1;
+      border-color: var(--green);
+      color: var(--green-dark);
+      background: #edf7ef;
+    }
+
+    .word.learned .learned-btn {
+      color: #fff;
+      background: var(--green);
+      border-color: var(--green-dark);
+    }
+
+    .small-btn {
+      min-height: 38px;
+      border: 1px solid var(--line);
+      background: #fffdf7;
+      color: var(--ink);
+      border-radius: 7px;
+      cursor: pointer;
+    }
+
+    .small-btn:hover {
+      border-color: var(--green);
+    }
+
+    @media (max-width: 720px) {
+      header {
+        grid-template-columns: 1fr;
+      }
+
+      .toolbar,
+      .control-row {
+        justify-content: stretch;
+      }
+
+      .toolbar {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .control-row {
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <div>
+        <h1>Daily Vocabulary Reader</h1>
+        <p class="date">2026-06-13 · 20 words · browser speech</p>
+      </div>
+      <div class="toolbar">
+        <button class="btn primary" id="playAll" type="button">Play all</button>
+        <button class="btn stop" id="stop" type="button">Stop</button>
+        <button class="btn sync" id="copySync" type="button">Copy learned</button>
+        <button class="btn" id="clearLearned" type="button">Clear marks</button>
+        <div class="control-row">
+          <label for="voice">Voice</label>
+          <select id="voice" aria-label="Voice"></select>
+        </div>
+        <div class="control-row">
+          <label for="rate">Speed <span id="rateValue">0.78</span></label>
+          <input id="rate" type="range" min="0.55" max="1.1" value="0.78" step="0.05" />
+        </div>
+      </div>
+    </header>
+
+    <div class="status" id="status">Ready. Use the buttons on each word to hear pronunciation.</div>
+    <div class="sync-panel" id="syncPanel">
+      <label for="syncText">Copy this text into ChatGPT to sync Notion</label>
+      <textarea id="syncText" readonly></textarea>
+      <div class="sync-actions">
+        <button class="btn sync" id="selectSyncText" type="button">Select text</button>
+        <button class="btn" id="hideSyncText" type="button">Hide</button>
+      </div>
+    </div>
+    <section class="grid" id="wordGrid" aria-label="Vocabulary list"></section>
+  </main>
+
+  <script>
+    const words = [
+      {
+        term: "ad-lib",
+        notionId: "90a8dca1-112e-4efc-b6ba-ca6fc6b087fd",
+        speakText: "ad lib",
+        pronunciation: "/ˌæd ˈlɪb/",
+        part: "v./n./adj.",
+        meaning: "即兴发挥；即兴台词；即兴的。",
+        example: "She had to ad-lib when the script was missing.",
+        tip: "来自拉丁语 ad libitum，意思是“随意地”。"
+      },
+      {
+        term: "paradigmatic",
+        notionId: "09408589-1a36-41ac-9b69-ab01764998c3",
+        speakText: "paradigmatic",
+        pronunciation: "/ˌpærədɪɡˈmætɪk/",
+        part: "adj.",
+        meaning: "典范的；范例性的；语言学中“聚合关系的”。",
+        example: "This case is paradigmatic of the broader problem.",
+        tip: "学术写作常用，表示“很能代表某类现象”。"
+      },
+      {
+        term: "loanword",
+        notionId: "f669182f-bcc7-46b9-b6cc-a151bee18161",
+        speakText: "loanword",
+        pronunciation: "/ˈloʊnwɜːrd/",
+        part: "n.",
+        meaning: "外来词；借词。",
+        example: "Sushi is a loanword in English.",
+        tip: "borrowed word 也是同义表达。"
+      },
+      {
+        term: "hibernate",
+        notionId: "69451fe0-9651-4383-b537-73a09b69ff94",
+        speakText: "hibernate",
+        pronunciation: "/ˈhaɪbərneɪt/",
+        part: "v.",
+        meaning: "冬眠；休眠。",
+        example: "Some animals hibernate during the winter.",
+        tip: "电脑也有 hibernate mode，比 sleep 更省电。"
+      },
+      {
+        term: "pent-up",
+        notionId: "5c148498-fda0-469b-b35d-7e40f09e9bf4",
+        speakText: "pent up",
+        pronunciation: "/ˌpent ˈʌp/",
+        part: "adj.",
+        meaning: "被压抑的；积压的。",
+        example: "She had years of pent-up frustration.",
+        tip: "常见搭配：pent-up anger, demand, energy。"
+      },
+      {
+        term: "migratory",
+        notionId: "bb74e5a4-a4b7-45ad-9bd9-0aa183da1afe",
+        speakText: "migratory",
+        pronunciation: "/ˈmaɪɡrətɔːri/",
+        part: "adj.",
+        meaning: "迁徙的；迁移性的。",
+        example: "Migratory birds travel long distances each year.",
+        tip: "来自 migrate，迁移、迁徙。"
+      },
+      {
+        term: "splurge on something",
+        notionId: "fc47c9d3-9c1b-4296-ae4f-7a93423d59d8",
+        speakText: "splurge on something",
+        pronunciation: "/splɜːrdʒ/",
+        part: "v./n.",
+        meaning: "挥霍；花大钱买某物。",
+        example: "She splurged on a new laptop.",
+        tip: "比 spend 更强调“花得有点奢侈”。"
+      },
+      {
+        term: "seizing",
+        notionId: "8e252e99-6fd2-4f3e-b9ef-d6130f22aeff",
+        speakText: "seizing",
+        pronunciation: "/ˈsiːzɪŋ/",
+        part: "n./gerund",
+        meaning: "抓住；夺取；扣押。",
+        example: "The court ordered the seizing of assets.",
+        tip: "seize the opportunity = 抓住机会。"
+      },
+      {
+        term: "cynical",
+        notionId: "3714d4d2-1569-40fc-9c53-dc97611a81d1",
+        speakText: "cynical",
+        pronunciation: "/ˈsɪnɪkəl/",
+        part: "adj.",
+        meaning: "愤世嫉俗的；怀疑别人动机的。",
+        example: "He is cynical about politics.",
+        tip: "不是单纯 skeptical，而是带“不相信好动机”的语气。"
+      },
+      {
+        term: "contemptuous",
+        notionId: "d973252c-5cbb-4034-a75e-832036a70388",
+        speakText: "contemptuous",
+        pronunciation: "/kənˈtemptʃuəs/",
+        part: "adj.",
+        meaning: "轻蔑的；不屑的。",
+        example: "She gave him a contemptuous look.",
+        tip: "contemptuous of something = 对……轻蔑。"
+      },
+      {
+        term: "contingency",
+        notionId: "ef880410-f3e0-40c7-b449-ff7f7ed30492",
+        speakText: "contingency",
+        pronunciation: "/kənˈtɪndʒənsi/",
+        part: "n.",
+        meaning: "意外情况；应急事项；可能发生的事。",
+        example: "We need a contingency plan.",
+        tip: "contingency plan = 应急预案。"
+      },
+      {
+        term: "mediation",
+        notionId: "5c232b3e-7c86-4e4b-811d-892c370c6320",
+        speakText: "mediation",
+        pronunciation: "/ˌmiːdiˈeɪʃən/",
+        part: "n.",
+        meaning: "调解；斡旋。",
+        example: "The dispute went to mediation before trial.",
+        tip: "法律、劳动纠纷、家庭纠纷语境常见。"
+      },
+      {
+        term: "logistics",
+        notionId: "72cc9fb3-4d7b-4433-8560-6c60db4eae37",
+        speakText: "logistics",
+        pronunciation: "/ləˈdʒɪstɪks/",
+        part: "n.",
+        meaning: "后勤；统筹安排；物流。",
+        example: "We still need to work out the logistics for the event.",
+        tip: "活动、差旅、项目执行都能用。"
+      },
+      {
+        term: "impeccable",
+        notionId: "349fa3e8-ce11-4871-9c01-ba3ec03a2ace",
+        speakText: "impeccable",
+        pronunciation: "/ɪmˈpekəbəl/",
+        part: "adj.",
+        meaning: "无可挑剔的；完美的。",
+        example: "He speaks English with impeccable pronunciation.",
+        tip: "比 good 更强，接近 flawless。"
+      },
+      {
+        term: "sequestration",
+        notionId: "4474b6cb-d133-44d8-abb9-a4e231e80abf",
+        speakText: "sequestration",
+        pronunciation: "/ˌsiːkwəˈstreɪʃən/",
+        part: "n.",
+        meaning: "隔离；扣押；封存；碳封存。",
+        example: "Carbon sequestration is central to many climate plans.",
+        tip: "法律、医学、气候语境都有不同用法。"
+      },
+      {
+        term: "insolence",
+        notionId: "2181f1d1-085c-47a3-a8d9-abf4e43a94ff",
+        speakText: "insolence",
+        pronunciation: "/ˈɪnsələns/",
+        part: "n.",
+        meaning: "傲慢无礼；顶撞。",
+        example: "The judge warned counsel about insolence to the court.",
+        tip: "比 rudeness 更正式、更重。"
+      },
+      {
+        term: "remit",
+        notionId: "bf076ae0-e6ab-4a12-b47f-62d710e85da9",
+        speakText: "remit",
+        pronunciation: "/rɪˈmɪt/",
+        part: "v./n.",
+        meaning: "汇款；减免；提交处理；职责范围。",
+        example: "Please remit payment within 30 days.",
+        tip: "英式英语中 remit 作名词可指“职责范围”。"
+      },
+      {
+        term: "courtesy",
+        notionId: "38e5db2b-05d3-4805-80a7-89b487e117cd",
+        speakText: "courtesy",
+        pronunciation: "/ˈkɜːrtəsi/",
+        part: "n.",
+        meaning: "礼貌；礼节；好意；免费提供。",
+        example: "Please show basic courtesy to the staff.",
+        tip: "courtesy of = 由……提供。"
+      },
+      {
+        term: "empress",
+        notionId: "0016e36e-f6fd-465f-a261-157d60a03349",
+        speakText: "empress",
+        pronunciation: "/ˈemprəs/",
+        part: "n.",
+        meaning: "女皇；皇后。",
+        example: "The empress exerted significant influence over the court.",
+        tip: "对应 emperor，皇帝。"
+      },
+      {
+        term: "affidavit",
+        notionId: "32291393-aa6b-49a6-a698-6766926c6fca",
+        speakText: "affidavit",
+        pronunciation: "/ˌæfəˈdeɪvɪt/",
+        part: "n. law",
+        meaning: "宣誓书；书面证词。",
+        example: "The court requires a notarized affidavit from each applicant.",
+        tip: "法律文件，通常经过宣誓或公证。"
+      }
+    ];
+
+    const grid = document.getElementById("wordGrid");
+    const statusEl = document.getElementById("status");
+    const voiceSelect = document.getElementById("voice");
+    const rateInput = document.getElementById("rate");
+    const rateValue = document.getElementById("rateValue");
+    const syncPanel = document.getElementById("syncPanel");
+    const syncText = document.getElementById("syncText");
+    const learnedKey = "audio-vocab-learned-2026-06-13";
+    let voices = [];
+    let activeIndex = -1;
+    let queueStopped = false;
+    const preferredVoiceNames = [
+      "Samantha",
+      "Alex",
+      "Daniel",
+      "Karen",
+      "Moira",
+      "Tessa",
+      "Google US English",
+      "Microsoft Aria",
+      "Microsoft Jenny"
+    ];
+
+    function renderWords() {
+      const learned = loadLearned();
+      grid.innerHTML = words.map((word, index) => `
+        <article class="word ${learned.has(index) ? "learned" : ""}" data-index="${index}">
+          <div class="topline">
+            <div>
+              <h2>${word.term}</h2>
+              <div class="pronunciation">${word.pronunciation} · ${word.part}</div>
+            </div>
+            <span class="index">${index + 1}</span>
+          </div>
+          <p class="meaning">${word.meaning}</p>
+          <div>
+            <p class="example">${word.example}</p>
+            <p class="tip">${word.tip}</p>
+          </div>
+          <div class="actions">
+            <button class="small-btn" type="button" data-say-word="${index}">Play word</button>
+            <button class="small-btn" type="button" data-say-example="${index}">Play example</button>
+            <button class="small-btn learned-btn" type="button" data-toggle-learned="${index}">
+              ${learned.has(index) ? "Marked learned" : "Mark fully learned"}
+            </button>
+          </div>
+        </article>
+      `).join("");
+      updateLearnedStatus();
+    }
+
+    function loadLearned() {
+      try {
+        return new Set(JSON.parse(localStorage.getItem(learnedKey) || "[]"));
+      } catch {
+        return new Set();
+      }
+    }
+
+    function saveLearned(learned) {
+      localStorage.setItem(learnedKey, JSON.stringify([...learned].sort((a, b) => a - b)));
+    }
+
+    function toggleLearned(index) {
+      const learned = loadLearned();
+      if (learned.has(index)) {
+        learned.delete(index);
+      } else {
+        learned.add(index);
+      }
+      saveLearned(learned);
+      renderWords();
+    }
+
+    function learnedSyncText() {
+      const learned = [...loadLearned()].sort((a, b) => a - b);
+      if (!learned.length) return "";
+      const numbers = learned.map(index => index + 1).join("、");
+      const details = learned.map(index => {
+        const word = words[index];
+        return `${index + 1}. ${word.term} | ${word.notionId}`;
+      }).join("\n");
+      return `完全记住：${numbers}\n\n请同步 Notion，把这些词标记为“是否完全学会”：\n${details}`;
+    }
+
+    function showSyncText(text) {
+      syncText.value = text;
+      syncPanel.classList.add("visible");
+      syncText.focus();
+      syncText.select();
+    }
+
+    function legacyCopyText(text) {
+      showSyncText(text);
+      try {
+        return document.execCommand("copy");
+      } catch {
+        return false;
+      }
+    }
+
+    function updateLearnedStatus() {
+      const learned = loadLearned();
+      statusEl.textContent = learned.size
+        ? `Marked fully learned locally: ${[...learned].map(index => index + 1).join(", ")}. Use Copy learned to send me the sync request.`
+        : "Ready. Use the buttons on each word to hear pronunciation, or mark words as fully learned.";
+    }
+
+    function loadVoices() {
+      voices = speechSynthesis.getVoices()
+        .filter(voice => voice.lang.toLowerCase().startsWith("en"))
+        .sort((a, b) => voiceScore(b) - voiceScore(a) || a.name.localeCompare(b.name));
+      voiceSelect.innerHTML = voices.map((voice, index) => {
+        const label = `${voiceScore(voice) > 0 ? "Recommended · " : ""}${voice.name} · ${voice.lang}`;
+        return `<option value="${index}">${label}</option>`;
+      }).join("");
+      if (!voices.length) {
+        voiceSelect.innerHTML = "<option>No English voice found</option>";
+      }
+    }
+
+    function voiceScore(voice) {
+      const name = voice.name.toLowerCase();
+      const lang = voice.lang.toLowerCase();
+      let score = 0;
+      if (lang === "en-us") score += 4;
+      if (lang === "en-gb") score += 3;
+      if (preferredVoiceNames.some(preferred => name.includes(preferred.toLowerCase()))) score += 8;
+      if (name.includes("enhanced") || name.includes("premium") || name.includes("natural")) score += 5;
+      if (voice.localService) score += 1;
+      return score;
+    }
+
+    function selectedVoice() {
+      return voices[Number(voiceSelect.value)] || voices[0] || null;
+    }
+
+    function setActive(index) {
+      activeIndex = index;
+      document.querySelectorAll(".word").forEach(card => {
+        card.classList.toggle("playing", Number(card.dataset.index) === index);
+      });
+    }
+
+    function speak(text, index = -1) {
+      return new Promise(resolve => {
+        speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = "en-US";
+        utterance.voice = selectedVoice();
+        utterance.rate = Number(rateInput.value);
+        utterance.pitch = 1;
+        utterance.onstart = () => {
+          if (index >= 0) setActive(index);
+          statusEl.textContent = `Playing: ${text}`;
+        };
+        utterance.onend = () => {
+          setActive(-1);
+          resolve();
+        };
+        utterance.onerror = () => {
+          setActive(-1);
+          statusEl.textContent = "Speech was interrupted or unavailable in this browser.";
+          resolve();
+        };
+        speechSynthesis.speak(utterance);
+      });
+    }
+
+    async function playAll() {
+      queueStopped = false;
+      for (let index = 0; index < words.length; index += 1) {
+        if (queueStopped) break;
+        const word = words[index];
+        await speak(`${word.speakText || word.term}. ${word.example}`, index);
+        await new Promise(resolve => setTimeout(resolve, 260));
+      }
+      if (!queueStopped) statusEl.textContent = "Finished all words.";
+    }
+
+    document.addEventListener("click", event => {
+      const wordButton = event.target.closest("[data-say-word]");
+      const exampleButton = event.target.closest("[data-say-example]");
+      if (wordButton) {
+        const index = Number(wordButton.dataset.sayWord);
+        speak(words[index].speakText || words[index].term, index);
+      }
+      if (exampleButton) {
+        const index = Number(exampleButton.dataset.sayExample);
+        speak(words[index].example, index);
+      }
+      const learnedButton = event.target.closest("[data-toggle-learned]");
+      if (learnedButton) {
+        const index = Number(learnedButton.dataset.toggleLearned);
+        toggleLearned(index);
+      }
+    });
+
+    document.getElementById("playAll").addEventListener("click", playAll);
+    document.getElementById("copySync").addEventListener("click", async () => {
+      const text = learnedSyncText();
+      if (!text) {
+        statusEl.textContent = "No learned words marked yet.";
+        syncPanel.classList.remove("visible");
+        return;
+      }
+      showSyncText(text);
+      try {
+        await navigator.clipboard.writeText(text);
+        statusEl.textContent = "Copied. Paste it into ChatGPT and I will sync Notion. If paste is empty, copy the visible text box.";
+      } catch {
+        const copied = legacyCopyText(text);
+        statusEl.textContent = copied
+          ? "Copied using fallback. Paste it into ChatGPT and I will sync Notion."
+          : "Auto-copy was blocked. The sync text is selected below; press Command+C, then paste it into ChatGPT.";
+      }
+    });
+    document.getElementById("selectSyncText").addEventListener("click", () => {
+      syncText.focus();
+      syncText.select();
+      statusEl.textContent = "Selected. Press Command+C, then paste it into ChatGPT.";
+    });
+    document.getElementById("hideSyncText").addEventListener("click", () => {
+      syncPanel.classList.remove("visible");
+    });
+    document.getElementById("clearLearned").addEventListener("click", () => {
+      localStorage.removeItem(learnedKey);
+      renderWords();
+    });
+    document.getElementById("stop").addEventListener("click", () => {
+      queueStopped = true;
+      speechSynthesis.cancel();
+      setActive(-1);
+      statusEl.textContent = "Stopped.";
+    });
+
+    rateInput.addEventListener("input", () => {
+      rateValue.textContent = Number(rateInput.value).toFixed(2);
+    });
+
+    renderWords();
+    loadVoices();
+    if ("onvoiceschanged" in speechSynthesis) {
+      speechSynthesis.onvoiceschanged = loadVoices;
+    }
+  </script>
+</body>
+</html>
