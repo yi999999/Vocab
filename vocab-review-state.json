@@ -1,6 +1,6 @@
 {
   "timezone": "America/New_York",
-  "updated_on": "2026-06-15",
+  "updated_on": "2026-06-16",
   "selection_policy": {
     "daily_target": 20,
     "review_intervals_days": [
@@ -359,100 +359,190 @@
       "page_id": "cbadbdbb-7856-419f-a555-b75fe118f61b",
       "term": "aforementioned",
       "first_seen": "2026-06-14",
-      "last_seen": "2026-06-14",
-      "stage": 0,
-      "next_review": "2026-06-16",
-      "status": "carried_due_review"
+      "last_seen": "2026-06-16",
+      "stage": 1,
+      "next_review": "2026-06-19",
+      "status": "review_later"
     },
     {
       "page_id": "1adbc728-dfd0-4f77-b632-6f7b13c96b21",
       "term": "blizzard",
       "first_seen": "2026-06-14",
-      "last_seen": "2026-06-14",
-      "stage": 0,
-      "next_review": "2026-06-16",
-      "status": "carried_due_review"
+      "last_seen": "2026-06-16",
+      "stage": 1,
+      "next_review": "2026-06-19",
+      "status": "review_later"
     },
     {
       "page_id": "fd26efa5-31da-4dce-99d1-4f7012ff6ffd",
       "term": "drastically",
       "first_seen": "2026-06-15",
-      "last_seen": "2026-06-15",
-      "stage": 0,
-      "next_review": "2026-06-16",
-      "status": "new_today"
+      "last_seen": "2026-06-16",
+      "stage": 1,
+      "next_review": "2026-06-19",
+      "status": "review_later"
     },
     {
       "page_id": "252aa814-1dd5-415a-ae50-124f73bde0bf",
       "term": "recalibration",
       "first_seen": "2026-06-15",
-      "last_seen": "2026-06-15",
-      "stage": 0,
-      "next_review": "2026-06-16",
-      "status": "new_today"
+      "last_seen": "2026-06-16",
+      "stage": 1,
+      "next_review": "2026-06-19",
+      "status": "review_later"
     },
     {
       "page_id": "02a2a22e-d74e-4783-9a87-c015e059e3d3",
       "term": "deviation",
       "first_seen": "2026-06-15",
-      "last_seen": "2026-06-15",
-      "stage": 0,
-      "next_review": "2026-06-16",
-      "status": "new_today"
+      "last_seen": "2026-06-16",
+      "stage": 1,
+      "next_review": "2026-06-19",
+      "status": "review_later"
     },
     {
       "page_id": "49630432-e126-4985-948a-6f3b47173e31",
       "term": "litigation",
       "first_seen": "2026-06-15",
-      "last_seen": "2026-06-15",
-      "stage": 0,
-      "next_review": "2026-06-16",
-      "status": "new_today"
+      "last_seen": "2026-06-16",
+      "stage": 1,
+      "next_review": "2026-06-19",
+      "status": "review_later"
     },
     {
       "page_id": "c9ae7f7b-bf9d-4e49-abb1-8158fd397312",
       "term": "astute",
       "first_seen": "2026-06-15",
-      "last_seen": "2026-06-15",
-      "stage": 0,
-      "next_review": "2026-06-16",
-      "status": "new_today"
+      "last_seen": "2026-06-16",
+      "stage": 1,
+      "next_review": "2026-06-19",
+      "status": "review_later"
     },
     {
       "page_id": "3af766e4-5c25-426f-b6b1-aa798f83393a",
       "term": "incarceration",
       "first_seen": "2026-06-15",
-      "last_seen": "2026-06-15",
-      "stage": 0,
-      "next_review": "2026-06-16",
-      "status": "new_today"
+      "last_seen": "2026-06-16",
+      "stage": 1,
+      "next_review": "2026-06-19",
+      "status": "review_later"
     },
     {
       "page_id": "8ceeb771-cab2-43c9-a661-9cffaef5feb4",
       "term": "suffice",
       "first_seen": "2026-06-15",
-      "last_seen": "2026-06-15",
-      "stage": 0,
-      "next_review": "2026-06-16",
-      "status": "new_today"
+      "last_seen": "2026-06-16",
+      "stage": 1,
+      "next_review": "2026-06-19",
+      "status": "review_later"
     },
     {
       "page_id": "c2a0170c-8f63-4a28-b88a-37c7e4eb6d87",
       "term": "temporal",
       "first_seen": "2026-06-15",
-      "last_seen": "2026-06-15",
+      "last_seen": "2026-06-16",
+      "stage": 1,
+      "next_review": "2026-06-19",
+      "status": "review_later"
+    },
+    {
+      "page_id": "53032000-4340-4c45-9188-ef0a3851df53",
+      "term": "dismantle",
+      "first_seen": "2026-06-16",
+      "last_seen": "2026-06-16",
       "stage": 0,
-      "next_review": "2026-06-16",
+      "next_review": "2026-06-17",
+      "status": "new_today"
+    },
+    {
+      "page_id": "228ce9e9-0179-45b4-b17d-d5fe4220e363",
+      "term": "precocious",
+      "first_seen": "2026-06-16",
+      "last_seen": "2026-06-16",
+      "stage": 0,
+      "next_review": "2026-06-17",
+      "status": "new_today"
+    },
+    {
+      "page_id": "49494c06-e44f-4ebb-9c34-7ff53849b9cb",
+      "term": "disseminate",
+      "first_seen": "2026-06-16",
+      "last_seen": "2026-06-16",
+      "stage": 0,
+      "next_review": "2026-06-17",
+      "status": "new_today"
+    },
+    {
+      "page_id": "331db05a-3323-411a-b4e0-26b6a730955f",
+      "term": "endowment",
+      "first_seen": "2026-06-16",
+      "last_seen": "2026-06-16",
+      "stage": 0,
+      "next_review": "2026-06-17",
+      "status": "new_today"
+    },
+    {
+      "page_id": "15249739-beb5-4acd-912d-a291992ded12",
+      "term": "gig economy",
+      "first_seen": "2026-06-16",
+      "last_seen": "2026-06-16",
+      "stage": 0,
+      "next_review": "2026-06-17",
+      "status": "new_today"
+    },
+    {
+      "page_id": "d2d709db-4866-4bba-9fbb-a56c96950616",
+      "term": "codify (into law)",
+      "first_seen": "2026-06-16",
+      "last_seen": "2026-06-16",
+      "stage": 0,
+      "next_review": "2026-06-17",
+      "status": "new_today"
+    },
+    {
+      "page_id": "c3ea8589-71bb-4e16-bcd8-e1abf4993ff7",
+      "term": "scaffolding",
+      "first_seen": "2026-06-16",
+      "last_seen": "2026-06-16",
+      "stage": 0,
+      "next_review": "2026-06-17",
+      "status": "new_today"
+    },
+    {
+      "page_id": "8a8572cc-2a9e-4d34-b23c-cdf9a3de3233",
+      "term": "protocol",
+      "first_seen": "2026-06-16",
+      "last_seen": "2026-06-16",
+      "stage": 0,
+      "next_review": "2026-06-17",
+      "status": "new_today"
+    },
+    {
+      "page_id": "4c386a2a-34c6-4db1-af94-6f08a58ad39c",
+      "term": "per diem",
+      "first_seen": "2026-06-16",
+      "last_seen": "2026-06-16",
+      "stage": 0,
+      "next_review": "2026-06-17",
+      "status": "new_today"
+    },
+    {
+      "page_id": "0f74873f-5bef-41dd-81dc-16fcc06d51ad",
+      "term": "comorbid",
+      "first_seen": "2026-06-16",
+      "last_seen": "2026-06-16",
+      "stage": 0,
+      "next_review": "2026-06-17",
       "status": "new_today"
     }
   ],
   "last_selection": {
-    "date": "2026-06-15",
-    "due_review_count": 12,
-    "new_count": 8,
+    "date": "2026-06-16",
+    "due_review_count": 10,
+    "new_count": 10,
     "total": 20,
-    "carried_due_count": 2,
-    "archive": "outputs/audio-vocab-2026-06-15.html",
+    "carried_due_count": 0,
+    "archive": "outputs/audio-vocab-2026-06-16.html",
     "latest": "outputs/audio-vocab.html"
   }
 }
